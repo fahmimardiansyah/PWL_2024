@@ -22,22 +22,6 @@ use App\Http\Controllers\PhotoController;
 |
 */
 
-Route::get('/hello', [WelcomeController::class,'hello']);
-Route::get('/welcome', [HomeController::class,'welcome']);
-Route::get('/about', [AboutController::class,'about']);
-Route::get('/articles', [ArticleController::class,'articles']);
-
-Route::resource('photos', PhotoController::class);
-
-Route::resource('photos', PhotoController::class)->only([
-    'index', 'show'
-   ]);
-   Route::resource('photos', PhotoController::class)->except([
-    'create', 'store', 'update', 'destroy'
-   ]);
-   
-   
-
 // Route::get('/hello', function () {
 //     return 'Hello World';
 // });
@@ -129,4 +113,28 @@ Route::get('/user/{name?}', function ($name = 'John') {
 // Route::view('/welcome', 'welcome');
 // Route::view('/welcome', 'welcome', ['name' => 'Taylor']);
 
+Route::get('/hello', [WelcomeController::class,'hello']);
+Route::get('/welcome', [HomeController::class,'welcome']);
+Route::get('/about', [AboutController::class,'about']);
+Route::get('/articles', [ArticleController::class,'articles']);
 
+Route::resource('photos', PhotoController::class);
+
+Route::resource('photos', PhotoController::class)->only([
+    'index', 'show'
+   ]);
+   Route::resource('photos', PhotoController::class)->except([
+    'create', 'store', 'update', 'destroy'
+   ]);
+
+// Route::get('/greeting', function () {
+// return view('hello', ['name' => 'Fahmi Mardiansyah']);
+// });
+
+// Route::get('/greeting', function () {
+//     return view('blog.hello', ['name' => 'Fahmi Mardiansyah']);
+//     });
+
+Route::get('/greeting', [WelcomeController::class, 'greeting']);
+
+    
